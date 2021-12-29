@@ -1,0 +1,53 @@
+﻿@model IEnumerable<_1670webdemo.Models.Account>
+
+@{
+    ViewBag.Title = "Account index";
+}
+@{ if (HttpContext.Current.Session["Username"] == null)
+    {
+        Response.Redirect("~/Accounts/Login");
+    } }
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered" id="example1">
+    <thead class="table thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountType)
+            </th>
+            <th>Modify</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td id="hidepass">
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountType)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Username }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Username }, new { onclick = "return confirm('Are you sure you wish to delete this account ?');" })
+            </td>
+        </tr>
+    }
+
+</table>
+<style>
+    #hidepass {
+        -webkit-text-security: disc; /* Default */
+    }
+
+</style>

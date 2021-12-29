@@ -1,0 +1,78 @@
+﻿@model IEnumerable<_1670webdemo.Models.Trainee>
+
+@{
+    ViewBag.Title = "Trainees index";
+}
+@{ if (HttpContext.Current.Session["Username"] == null)
+    {
+        Response.Redirect("~/Accounts/Login");
+    } }
+<h2 class="text-center">@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered" id="example1">
+    <thead class="table thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Account.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TraineeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TraineeEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TraineeAge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TraineeDoB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TraineeEdu)
+            </th>
+            <th>Modify</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Account.Username)
+            </td>
+            <td id="hidepass">
+                @Html.DisplayFor(modelItem => item.Account.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TraineeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TraineeEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TraineeAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TraineeDoB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TraineeEdu)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TraineeID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TraineeID }, new { onclick = "return confirm('Are you sure you wish to delete this trainee ?');" })
+            </td>
+        </tr>
+    }
+
+</table>
+<style>
+    #hidepass {
+        -webkit-text-security: disc; /* Default */
+    }
+</style>

@@ -1,0 +1,113 @@
+﻿@model IEnumerable<_1670webdemo.Models.Staff>
+
+@{
+    ViewBag.Title = "Staff index";
+}
+@{ if (HttpContext.Current.Session["Username"] == null)
+    {
+        Response.Redirect("~/Accounts/Login");
+    }
+    else
+    {
+        if (HttpContext.Current.Session["AccountType"].ToString() != "Staff" || HttpContext.Current.Session["AccountType"].ToString() != "Admin")
+        {
+            Response.Redirect("~/Home/Index");
+        }
+    }
+}
+<h2 class="text-center">@ViewBag.Title</h2>
+
+@if (HttpContext.Current.Session["Username"] != null)
+{
+    if (HttpContext.Current.Session["AccountType"].ToString() == "Trainer" || HttpContext.Current.Session["AccountType"].ToString() == "Trainee")
+    {
+        //Hide when login as trainer and trainee
+    }
+    else
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        </p>            }
+}
+<table class="table table-bordered" id="example1">
+    <thead class="table thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Account.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffAge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffAddr)
+            </th>
+            @if (HttpContext.Current.Session["Username"] != null)
+            {
+                if (HttpContext.Current.Session["AccountType"].ToString() == "Trainer" || HttpContext.Current.Session["AccountType"].ToString() == "Trainee")
+                {
+                    //Hide when login as trainer and trainee
+                }
+                else
+                {
+                    <th>Modify</th>
+                }
+            }
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Account.Username)
+            </td>
+            <td id="hidepass">
+                @Html.DisplayFor(modelItem => item.Account.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffAddr)
+            </td>
+            @if (HttpContext.Current.Session["Username"] != null)
+            {
+                if (HttpContext.Current.Session["AccountType"].ToString() == "Trainer" || HttpContext.Current.Session["AccountType"].ToString() == "Trainee")
+                {
+                    //Hide when login as trainer and trainee
+                }
+                else
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.StaffID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.StaffID }, new { onclick = "return confirm('Are you sure you wish to delete this staff ?');" })
+                    </td>
+                }
+            }
+            else
+            {
+                <td></td>
+            }
+
+        </tr>
+    }
+</table>
+<style>
+    #hidepass {
+        -webkit-text-security: disc; /* Default */
+    }
+</style>

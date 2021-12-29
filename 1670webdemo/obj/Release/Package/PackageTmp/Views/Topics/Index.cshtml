@@ -1,0 +1,55 @@
+﻿@model IEnumerable<_1670webdemo.Models.Topic>
+
+@{
+    ViewBag.Title = "Topic index";
+}
+@{ if (HttpContext.Current.Session["Username"] == null)
+    {
+        Response.Redirect("~/Accounts/Login");
+    } }
+<h2 class="text-center">@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered" id="example1">
+    <thead class="table thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TopicID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TopicName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TopicDesc)
+            </th>
+            <th>Modify</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TopicID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TopicName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TopicDesc)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TopicID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TopicID }, new { onclick = "return confirm('Are you sure you wish to delete this tppic ?');" })
+            </td>
+        </tr>
+    }
+
+</table>
