@@ -17,28 +17,23 @@ namespace _1670webdemo.Models
         }
 
         [Key]
-        [Display(Name = "Course ID")]
         [StringLength(50)]
         public string CourseID { get; set; }
 
         [Required]
-        [Display(Name = "Course Name")]
         [StringLength(50)]
         public string CourseName { get; set; }
 
         [Required]
-        [Display(Name = "Course Description")]
         [StringLength(50)]
         public string CourseDesc { get; set; }
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "Category ID")]
         public string CatID { get; set; }
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "Trainer ID")]
         public string TrainerID { get; set; }
 
         public virtual Category Category { get; set; }

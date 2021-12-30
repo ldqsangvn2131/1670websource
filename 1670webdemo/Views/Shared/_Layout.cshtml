@@ -41,16 +41,46 @@
                 <strong>@Session["Username"]</strong>&nbsp;!&nbsp;
                 <i class="fas fa-sort-down"></i>
             </p>
+        </a><div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+    <div class="dropdown-divider"></div>
+    @if (HttpContext.Current.Session["AccountType"].ToString() == "Trainer")
+    {
+        <a href="@Url.Action("Profiles", "Trainers")" class="dropdown-item">
+            <!-- Message Start -->
+            <i class="float-right fas fa-sign-out-alt"></i>
+            <span>View profile</span>
         </a>
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                <div class="dropdown-divider"></div>
-                                <a href="@Url.Action("Logout", "Accounts")" class="dropdown-item">
-                                    <!-- Message Start -->
-                                    <i class="float-right fas fa-sign-out-alt"></i>
-                                    <span>Log out</span>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                            </div>
+        <div class="dropdown-divider"></div>
+        <a href="@Url.Action("Logout", "Accounts")" class="dropdown-item">
+            <!-- Message Start -->
+            <i class="float-right fas fa-sign-out-alt"></i>
+            <span>Log out</span>
+        </a>
+    }
+    else if (HttpContext.Current.Session["AccountType"].ToString() == "Trainee")
+    {
+        <a href="@Url.Action("Profiles", "Trainees")" class="dropdown-item">
+            <!-- Message Start -->
+            <i class="float-right fas fa-sign-out-alt"></i>
+            <span>View profile</span>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="@Url.Action("Logout", "Accounts")" class="dropdown-item">
+            <!-- Message Start -->
+            <i class="float-right fas fa-sign-out-alt"></i>
+            <span>Log out</span>
+        </a>
+    }
+    else
+    {
+        <div class="dropdown-divider"></div>
+        <a href="@Url.Action("Logout", "Accounts")" class="dropdown-item">
+            <!-- Message Start -->
+            <i class="float-right fas fa-sign-out-alt"></i>
+            <span>Log out</span>
+        </a>
+    }
+</div>
                     }
                 </li>
             </ul>
@@ -119,17 +149,17 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="@Url.Action("Index", "CourseDetails")" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>Course details</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="@Url.Action("Index", "Courses")" class="nav-link">
                                 <i class="fas fa-circle nav-icon"></i>
                                 <p>Courses</p>
                             </a>
                         </li>
-                        @*<li class="nav-item">
-                            <a href="@Url.Action("Index", "CourseDetails")" class="nav-link">
-                                <i class="fas fa-circlenav-icon"></i>
-                                <p>Course details</p>
-                            </a>
-                        </li>*@
                         <li class="nav-item">
                             <a href="@Url.Action("Index", "Topics")" class="nav-link">
                                 <i class="fas fa-circle nav-icon"></i>
@@ -175,12 +205,12 @@
                                 <p>Courses</p>
                             </a>
                         </li>
-                        @*<li class="nav-item">
+                        <li class="nav-item">
                             <a href="@Url.Action("Index", "CourseDetails")" class="nav-link">
-                                <i class="fas fa-circlenav-icon"></i>
+                                <i class="fas fa-circle nav-icon"></i>
                                 <p>Course details</p>
                             </a>
-                        </li>*@
+                        </li>
                         <li class="nav-item">
                             <a href="@Url.Action("Index", "Topics")" class="nav-link">
                                 <i class="fas fa-circle nav-icon"></i>

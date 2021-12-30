@@ -15,35 +15,29 @@ namespace _1670webdemo.Models
             CourseDetails = new HashSet<CourseDetail>();
             Courses = new HashSet<Course>();
         }
-        [Key]
+
         [StringLength(50)]
-        [Display(Name = "Trainer ID")]
         public string TrainerID { get; set; }
 
         [Required]
-        [Display(Name = "Trainer Name")]
         [StringLength(50)]
         public string TrainerName { get; set; }
 
         [Required]
-        [Display(Name = "Trainer Email")]
         [StringLength(50)]
         public string TrainerEmail { get; set; }
 
         [Required]
-        [Display(Name = "Trainer Spec")]
         [StringLength(50)]
         public string TrainerSpec { get; set; }
-        [Display(Name = "Trainer Age")]
+
         public int TrainerAge { get; set; }
 
         [Required]
-        [Display(Name = "Trainer Address")]
         [StringLength(50)]
         public string TrainerAddr { get; set; }
 
         [Required]
-        [Display(Name = "Username")]
         [StringLength(50)]
         public string Username { get; set; }
 

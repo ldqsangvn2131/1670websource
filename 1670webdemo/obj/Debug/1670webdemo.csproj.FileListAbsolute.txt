@@ -77,4 +77,3 @@ D:\Works\1670\visualstudio\1670webdemo\1670webdemo\obj\Debug\1670webdemo.csproj.
 D:\Works\1670\visualstudio\1670webdemo\1670webdemo\obj\Debug\1670webdemo.csproj.CopyComplete
 D:\Works\1670\visualstudio\1670webdemo\1670webdemo\obj\Debug\1670webdemo.dll
 D:\Works\1670\visualstudio\1670webdemo\1670webdemo\obj\Debug\1670webdemo.pdb
-D:\Works\1670\visualstudio\1670webdemo\1670webdemo\obj\Debug\1670webdemo.csproj.AssemblyReference.cache

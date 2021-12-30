@@ -17,9 +17,46 @@ namespace _1670webdemo.Controllers
         // GET: Trainers
         public ActionResult Index()
         {
-            var trainers = db.Trainers.Include(t => t.Account);
-            return View(trainers.ToList());
+            var trainer = db.Trainers.Include(t => t.Account);
+            return View(trainer.ToList());
         }
+        public ActionResult Profiles()
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
+            string Username = Session["Username"].ToString();
+            Trainer trainer = new Trainer();
+            trainer = db.Trainers.Where(a => a.Username == Username).FirstOrDefault();
+            return View(trainer);
+        }
+
+        public ActionResult EditProfiles(string id)
+        {
+            Trainer trainer = new Trainer();
+            trainer = db.Trainers.Where(a => a.Username == id).FirstOrDefault();
+            return View(trainer);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult EditProfile([Bind(Include = "TrainerID,Username,TrainerName,TrainerAge,TrainerSpec,TrainerAddr")] Trainer trainer)
+        {
+            if (ModelState.IsValid)
+            {
+
+                db.Entry(trainer).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Profiles");
+            }
+                return View(trainer);
+            }
+
+
+
+
 
         // GET: Trainers/Create
         public ActionResult Create()

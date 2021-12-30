@@ -68,7 +68,6 @@ namespace _1670webdemo.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Username = new SelectList(db.Accounts, "Username", "Password", staff.Username);
             return View(staff);
         }
         [HttpGet]

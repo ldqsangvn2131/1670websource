@@ -14,23 +14,19 @@ namespace _1670webdemo.Models
         {
             CourseDetails = new HashSet<CourseDetail>();
         }
-        [Key]
-        [Display(Name = "Topic ID")]
+
         [StringLength(50)]
         public string TopicID { get; set; }
 
         [Required]
-        [Display(Name = "Topic Name")]
         [StringLength(50)]
         public string TopicName { get; set; }
 
         [Required]
-        [Display(Name = "Topic Description")]
         [StringLength(50)]
         public string TopicDesc { get; set; }
 
         [Required]
-        [Display(Name = "Course ID")]
         [StringLength(50)]
         public string CourseID { get; set; }
 

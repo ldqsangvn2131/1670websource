@@ -26,7 +26,6 @@ namespace _1670webdemo.Models
         public string Password { get; set; }
 
         [Required]
-        [Display(Name = "Account Type")]
         [StringLength(50)]
         public string AccountType { get; set; }
 

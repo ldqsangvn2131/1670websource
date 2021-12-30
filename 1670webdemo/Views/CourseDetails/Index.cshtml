@@ -1,0 +1,86 @@
+﻿@model IEnumerable<_1670webdemo.Models.CourseDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{ if (HttpContext.Current.Session["Username"] == null)
+    {
+        Response.Redirect("~/Accounts/Login");
+    } }
+@if (HttpContext.Current.Session["Username"] != null)
+{
+    if (HttpContext.Current.Session["AccountType"].ToString() == "Trainer" || HttpContext.Current.Session["AccountType"].ToString() == "Trainee")
+    {
+        //Hide when login as trainer and trainee
+    }
+    else
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        </p>    }
+}
+<table class="table table-bordered" id="example1">
+    <thead class="table thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Topic.TopicName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trainee.TraineeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trainer.TrainerName)
+            </th>
+            @if (HttpContext.Current.Session["Username"] != null)
+            {
+                if (HttpContext.Current.Session["AccountType"].ToString() == "Trainer" || HttpContext.Current.Session["AccountType"].ToString() == "Trainee")
+                {
+                    //Hide when login as trainer and trainee
+                }
+                else
+                {
+                    <th>Modify</th>
+                }
+            }
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Course.CourseName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Topic.TopicName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Trainee.TraineeName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Trainer.TrainerName)
+    </td>
+    @if (HttpContext.Current.Session["Username"] != null)
+    {
+        if (HttpContext.Current.Session["AccountType"].ToString() == "Trainer" || HttpContext.Current.Session["AccountType"].ToString() == "Trainee")
+        {
+            //Hide when login as trainer and trainee
+        }
+        else
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CourseDetailID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CourseDetailID }, new { onclick = "return confirm('Are you sure you wish to delete this course detail ?');" })
+            </td>
+        }
+    }
+    else
+    {
+        <td></td>
+    }
+</tr>
+    }
+
+</table>

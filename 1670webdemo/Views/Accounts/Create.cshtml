@@ -52,13 +52,6 @@
     new SelectListItem {Text = "Trainer", Value = "Trainer"},
     new SelectListItem {Text = "Trainee", Value = "Trainee"},
 }, new { @class = "form-control" })
-                @*<select name="AccountType">
-                        <option value="">Select a account type</option>
-                        <option value="Admin">Admin</option>
-                        <option value="Staff">Staff</option>
-                        <option value="Trainer">Trainer</option>
-                        <option value="Trainee">Trainee</option>
-                    </select>*@
                 @Html.ValidationMessageFor(model => model.AccountType, "", new { @class = "text-danger" })
             </div>
         </div>

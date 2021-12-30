@@ -6,19 +6,7 @@
 @{ if (HttpContext.Current.Session["Username"] == null)
     {
         Response.Redirect("~/Accounts/Login");
-    }
-    else
-    {
-        if (HttpContext.Current.Session["AccountType"].ToString() == "Staff" || HttpContext.Current.Session["AccountType"].ToString() == "Admin")
-        {
-
-        }
-        else
-        {
-            Response.Redirect("~/Home/Index");
-        }
-    }
-}
+    } }
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

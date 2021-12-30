@@ -68,7 +68,7 @@ namespace _1670webdemo.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CourseDetail>()
-                .Property(e => e.CourseID)
+                .Property(e => e.CourseDetailID)
                 .IsUnicode(false);
 
             modelBuilder.Entity<CourseDetail>()
@@ -81,6 +81,10 @@ namespace _1670webdemo.Models
 
             modelBuilder.Entity<CourseDetail>()
                 .Property(e => e.TopicID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CourseDetail>()
+                .Property(e => e.CourseID)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Course>()

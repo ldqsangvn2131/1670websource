@@ -20,6 +20,17 @@ namespace _1670webdemo.Controllers
             var trainees = db.Trainees.Include(t => t.Account);
             return View(trainees.ToList());
         }
+        public ActionResult Profiles()
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
+            string Username = Session["Username"].ToString();
+            Trainee trainee = new Trainee();
+            trainee = db.Trainees.Where(a => a.Username == Username).FirstOrDefault();
+            return View(trainee);
+        }
         public ActionResult Create()
         {
             ViewBag.Username = new SelectList(db.Accounts.Where(g => g.AccountType == "Trainee"), "Username", "Username");
