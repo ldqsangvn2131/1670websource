@@ -24,7 +24,7 @@ namespace _1670webdemo.Controllers
         // GET: Trainers/Create
         public ActionResult Create()
         {
-            ViewBag.Username = new SelectList(db.Accounts, "Username", "Username");
+            ViewBag.Username = new SelectList(db.Accounts.Where(g => g.AccountType == "Trainer"), "Username", "Username");
             return View();
         }
         [HttpPost]
@@ -38,7 +38,7 @@ namespace _1670webdemo.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Username = new SelectList(db.Accounts, "Username", "Password", trainer.Username);
+            ViewBag.Username = new SelectList(db.Accounts.Where(g => g.AccountType == "Trainer"), "Username", "Password", trainer.Username);
             return View(trainer);
         }
         public ActionResult Edit(string id)

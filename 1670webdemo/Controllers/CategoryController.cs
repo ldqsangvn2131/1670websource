@@ -61,16 +61,7 @@ namespace webtest.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isCatIDAlreadyExists = db.Categories.Any(x => x.CatID == category.CatID);
-                if (isCatIDAlreadyExists)
-                {
-                    return View(category);
-                }
-                var isCatNameAlreadyExists = db.Categories.Any(x => x.CatName == category.CatName);
-                if (isCatNameAlreadyExists)
-                {
-                    return View(category);
-                }
+                
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
