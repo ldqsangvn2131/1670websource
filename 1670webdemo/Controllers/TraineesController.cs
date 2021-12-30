@@ -71,6 +71,5 @@ namespace _1670webdemo.Controllers
             return RedirectToAction("Index");
 
         }
-
     }
 }

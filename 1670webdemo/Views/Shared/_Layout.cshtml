@@ -42,15 +42,16 @@
                 <i class="fas fa-sort-down"></i>
             </p>
         </a>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <a href="@Url.Action("Logout", "Accounts")" class="dropdown-item">
-                                <!-- Message Start -->
-                                <i class="float-right fas fa-sign-out-alt"></i>
-                                <span>Log out</span>
-                            </a>
-                        </div>}
-                    else
-                    {
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                <div class="dropdown-divider"></div>
+                                <a href="@Url.Action("Logout", "Accounts")" class="dropdown-item">
+                                    <!-- Message Start -->
+                                    <i class="float-right fas fa-sign-out-alt"></i>
+                                    <span>Log out</span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+
+                            </div>
                     }
                 </li>
             </ul>

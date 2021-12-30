@@ -3634,7 +3634,7 @@ input[type="button"].btn-block {
   color: #212529;
   text-align: inherit;
   white-space: nowrap;
-  background-color: transparent;
+  background-color: #fff;
   border: 0;
 }
 
