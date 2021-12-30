@@ -50,6 +50,11 @@ namespace _1670webdemo.Controllers
         {
             if (ModelState.IsValid)
             {
+                var isUsernameAlreadyExists = db.Accounts.Any(x => x.Username == account.Username);
+                if (isUsernameAlreadyExists)
+                {
+                    return View(account);
+                }
                 ViewBag.AccountType = new SelectList(db.Accounts, "AccountType", "AccountType",account.AccountType);
                 account.Password = GetMD5(account.Password);
                 db.Configuration.ValidateOnSaveEnabled = false;

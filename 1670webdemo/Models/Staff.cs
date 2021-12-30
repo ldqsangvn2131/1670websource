@@ -11,6 +11,7 @@ namespace _1670webdemo.Models
     {
         [Key]
         [StringLength(50)]
+        [RegularExpression("^S+[0-9]", ErrorMessage = "Staff ID must be S + number")]
         [Display(Name = "Staff ID")]
         public string StaffID { get; set; }
 
@@ -20,6 +21,7 @@ namespace _1670webdemo.Models
         public string StaffName { get; set; }
 
         [Required]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
         [Display(Name = "Staff Email")]
         [StringLength(50)]
         public string StaffEmail { get; set; }

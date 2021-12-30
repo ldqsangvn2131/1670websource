@@ -50,7 +50,6 @@
                                     <span>Log out</span>
                                 </a>
                                 <div class="dropdown-divider"></div>
-
                             </div>
                     }
                 </li>
@@ -107,75 +106,88 @@
                 <ul class="nav nav-treeview">
                     @if (HttpContext.Current.Session["AccountType"].ToString() == "Trainer" || HttpContext.Current.Session["AccountType"].ToString() == "Trainee")
                     {
-    <li class="nav-item">
-        <a href="@Url.Action("Index", "Trainers")" class="nav-link">
-            <i class="fas fa-chevron-right nav-icon"></i>
-            <p>Trainers</p>
-        </a>
-    </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Trainers")" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>Trainers</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="@Url.Action("Index", "Trainees")" class="nav-link">
-                                <i class="fas fa-chevron-right nav-icon"></i>
+                                <i class="fas fa-circle nav-icon"></i>
                                 <p>Trainees</p>
                             </a>
                         </li>
-                                            <li class="nav-item">
-                                                <a href="@Url.Action("Index", "Courses")" class="nav-link">
-                                                    <i class="fas fa-chevron-right nav-icon"></i>
-                                                    <p>Courses</p>
-                                                </a>
-                                            </li>
-                                                                <li class="nav-item">
-                                                                    <a href="@Url.Action("Index", "Topics")" class="nav-link">
-                                                                        <i class="fas fa-chevron-right nav-icon"></i>
-                                                                        <p>Topics</p>
-                                                                    </a>
-                                                                </li> }
-                                                                                else
-                                                                                {
-                                                                <li class="nav-item">
-                                                                    <a href="@Url.Action("Index", "Category")" class="nav-link">
-                                                                        <i class="fas fa-chevron-right nav-icon"></i>
-                                                                        <p>Category</p>
-                                                                    </a>
-                                                                </li>
-                                                                                    <li class="nav-item">
-                                                                                        <a href="@Url.Action("Index", "Accounts")" class="nav-link">
-                                                                                            <i class="fas fa-chevron-right nav-icon"></i>
-                                                                                            <p>Account</p>
-                                                                                        </a>
-                                                                                    </li>
-                                                                                                        <li class="nav-item">
-                                                                                                            <a href="@Url.Action("Index", "Staffs")" class="nav-link">
-                                                                                                                <i class="fas fa-chevron-right nav-icon"></i>
-                                                                                                                <p>Staffs</p>
-                                                                                                            </a>
-                                                                                                        </li>
-                                                                                                                            <li class="nav-item">
-                                                                                                                                <a href="@Url.Action("Index", "Trainers")" class="nav-link">
-                                                                                                                                    <i class="fas fa-chevron-right nav-icon"></i>
-                                                                                                                                    <p>Trainers</p>
-                                                                                                                                </a>
-                                                                                                                            </li>
-                                                                                                                                                <li class="nav-item">
-                                                                                                                                                    <a href="@Url.Action("Index", "Trainees")" class="nav-link">
-                                                                                                                                                        <i class="fas fa-chevron-right nav-icon"></i>
-                                                                                                                                                        <p>Trainees</p>
-                                                                                                                                                    </a>
-                                                                                                                                                </li>
-                                                                                                                                                                    <li class="nav-item">
-                                                                                                                                                                        <a href="@Url.Action("Index", "Courses")" class="nav-link">
-                                                                                                                                                                            <i class="fas fa-chevron-right nav-icon"></i>
-                                                                                                                                                                            <p>Courses</p>
-                                                                                                                                                                        </a>
-                                                                                                                                                                    </li>
-                                                                                                                                                                                        <li class="nav-item">
-                                                                                                                                                                                            <a href="@Url.Action("Index", "Topics")" class="nav-link">
-                                                                                                                                                                                                <i class="fas fa-chevron-right nav-icon"></i>
-                                                                                                                                                                                                <p>Topics</p>
-                                                                                                                                                                                            </a>
-                                                                                                                                                                                        </li>
-}
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Courses")" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>Courses</p>
+                            </a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a href="@Url.Action("Index", "CourseDetails")" class="nav-link">
+                                <i class="fas fa-circlenav-icon"></i>
+                                <p>Course details</p>
+                            </a>
+                        </li>*@
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Topics")" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>Topics</p>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Category")" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>Category</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Accounts")" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>Account</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Staffs")" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>Staffs</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Trainers")" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>Trainers</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Trainees")" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>Trainees</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Courses")" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>Courses</p>
+                            </a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a href="@Url.Action("Index", "CourseDetails")" class="nav-link">
+                                <i class="fas fa-circlenav-icon"></i>
+                                <p>Course details</p>
+                            </a>
+                        </li>*@
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Topics")" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>Topics</p>
+                            </a>
+                        </li>
+                    }
                 </ul>
             </li>
 }

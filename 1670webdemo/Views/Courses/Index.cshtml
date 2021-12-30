@@ -6,7 +6,19 @@
 @{ if (HttpContext.Current.Session["Username"] == null)
     {
         Response.Redirect("~/Accounts/Login");
-    } }
+    }
+    else
+    {
+        if (HttpContext.Current.Session["AccountType"].ToString() == "Staff" || HttpContext.Current.Session["AccountType"].ToString() == "Admin")
+        {
+
+        }
+        else
+        {
+            Response.Redirect("~/Home/Index");
+        }
+    }
+}
 <h2 class="text-center">@ViewBag.Title</h2>
 
 @if (HttpContext.Current.Session["Username"] != null)
@@ -17,9 +29,9 @@
     }
     else
     {
-<p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
-</p> }
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        </p>            }
 }
 <table class="table table-bordered" id="example1">
     <thead class="table thead-dark">

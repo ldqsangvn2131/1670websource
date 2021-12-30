@@ -36,13 +36,13 @@ namespace _1670webdemo.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Username = new SelectList(db.Accounts, "Username", "Password", trainee.Username);
+            ViewBag.Username = new SelectList(db.Accounts, "Username", "Username", trainee.Username);
             return View(trainee);
         }
         public ActionResult Edit(string id)
         {
             Trainee trainee = db.Trainees.Find(id);
-            ViewBag.Username = new SelectList(db.Accounts, "Username", "Password", trainee.Username);
+            ViewBag.Username = new SelectList(db.Accounts, "Username", "Username", trainee.Username);
             return View(trainee);
         }
         [HttpPost]

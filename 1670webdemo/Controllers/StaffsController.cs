@@ -31,14 +31,24 @@ namespace _1670webdemo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "StaffID,StaffName,StaffEmail,StaffAge,StaffAddr,Username")] Staff staff)
         {
+            ViewBag.Username = new SelectList(db.Accounts, "Username", "Password", staff.Username);
             if (ModelState.IsValid)
             {
+                var isStaffIDAlreadyExists = db.Staffs.Any(x => x.StaffID == staff.StaffID);
+                if (isStaffIDAlreadyExists)
+                {
+                    return View(staff);
+                }
+                var isStaffUsernameAlreadyExists = db.Staffs.Any(x => x.Username == staff.Username);
+                if (isStaffUsernameAlreadyExists)
+                {
+                    return View(staff);
+                }
                 db.Staffs.Add(staff);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Username = new SelectList(db.Accounts, "Username", "Password", staff.Username);
             return View(staff);
         }
         public ActionResult Edit(string id)

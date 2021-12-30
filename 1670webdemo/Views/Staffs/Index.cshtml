@@ -9,7 +9,11 @@
     }
     else
     {
-        if (HttpContext.Current.Session["AccountType"].ToString() != "Staff" || HttpContext.Current.Session["AccountType"].ToString() != "Admin")
+        if (HttpContext.Current.Session["AccountType"].ToString() == "Staff" || HttpContext.Current.Session["AccountType"].ToString() == "Admin")
+        {
+
+        }
+        else
         {
             Response.Redirect("~/Home/Index");
         }
@@ -27,7 +31,7 @@
     {
         <p>
             @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
-        </p>            }
+        </p>    }
 }
 <table class="table table-bordered" id="example1">
     <thead class="table thead-dark">
@@ -106,8 +110,3 @@
         </tr>
     }
 </table>
-<style>
-    #hidepass {
-        -webkit-text-security: disc; /* Default */
-    }
-</style>
