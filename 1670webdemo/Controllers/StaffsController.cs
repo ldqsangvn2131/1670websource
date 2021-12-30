@@ -63,6 +63,16 @@ namespace _1670webdemo.Controllers
         {
             if (ModelState.IsValid)
             {
+                var isStaffIDAlreadyExists = db.Staffs.Any(x => x.StaffID == staff.StaffID);
+                if (isStaffIDAlreadyExists)
+                {
+                    return View(staff);
+                }
+                var isStaffUsernameAlreadyExists = db.Staffs.Any(x => x.Username == staff.Username);
+                if (isStaffUsernameAlreadyExists)
+                {
+                    return View(staff);
+                }
                 db.Entry(staff).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

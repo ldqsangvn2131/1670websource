@@ -77,6 +77,11 @@ namespace _1670webdemo.Controllers
         {
             if (ModelState.IsValid)
             {
+                var isUsernameAlreadyExists = db.Accounts.Any(x => x.Username == account.Username);
+                if (isUsernameAlreadyExists)
+                {
+                    return View(account);
+                }
                 account.Password = GetMD5(account.Password);
                 db.Configuration.ValidateOnSaveEnabled = false;
                 db.Entry(account).State = EntityState.Modified;
