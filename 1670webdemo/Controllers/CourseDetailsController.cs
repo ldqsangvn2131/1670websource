@@ -14,7 +14,6 @@ namespace _1670webdemo.Controllers
     {
         private hrContext db = new hrContext();
 
-        // GET: CourseDetails
         public ActionResult Index()
         {
             var courseDetails = db.CourseDetails.Include(c => c.Course).Include(c => c.Topic).Include(c => c.Trainee).Include(c => c.Trainer);
@@ -22,7 +21,6 @@ namespace _1670webdemo.Controllers
         }
 
        
-        // GET: CourseDetails/Create
         public ActionResult Create()
         {
             ViewBag.CourseID = new SelectList(db.Courses, "CourseID", "CourseName");
@@ -50,7 +48,6 @@ namespace _1670webdemo.Controllers
             return View(courseDetail);
         }
 
-        // GET: CourseDetails/Edit/5
         public ActionResult Edit(string id)
         {
             CourseDetail courseDetail = db.CourseDetails.Find(id);

@@ -219,7 +219,7 @@ namespace _1670webdemo.Models
             modelBuilder.Entity<Trainer>()
                 .HasMany(e => e.Courses)
                 .WithRequired(e => e.Trainer)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
         }
     }
 }

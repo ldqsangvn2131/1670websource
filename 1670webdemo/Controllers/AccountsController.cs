@@ -34,7 +34,6 @@ namespace _1670webdemo.Controllers
                 return byte2String;
             }
         }
-        // GET: Accounts
         public ActionResult Index()
         {
             return View(db.Accounts.Where(g => g.AccountType != "Admin").ToList());
@@ -65,7 +64,6 @@ namespace _1670webdemo.Controllers
             return View(account);
         }
 
-        // GET: Accounts/Edit/5
         public ActionResult Edit(string id)
         {
             Account account = db.Accounts.Find(id);

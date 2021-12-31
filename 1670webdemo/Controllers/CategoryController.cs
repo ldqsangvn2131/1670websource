@@ -12,7 +12,6 @@ namespace webtest.Controllers
     public class CategoryController : Controller
     {
         hrContext db = new hrContext();
-        // GET: Category
         public ActionResult Index()
         {
             var list = db.Categories.ToList<Category>();

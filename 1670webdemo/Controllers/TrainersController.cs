@@ -14,7 +14,6 @@ namespace _1670webdemo.Controllers
     {
         private hrContext db = new hrContext();
 
-        // GET: Trainers
         public ActionResult Index()
         {
             var trainer = db.Trainers.Include(t => t.Account);
@@ -54,11 +53,6 @@ namespace _1670webdemo.Controllers
                 return View(trainer);
             }
 
-
-
-
-
-        // GET: Trainers/Create
         public ActionResult Create()
         {
             ViewBag.Username = new SelectList(db.Accounts.Where(g => g.AccountType == "Trainer"), "Username", "Username");

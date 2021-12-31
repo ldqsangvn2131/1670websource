@@ -14,14 +14,12 @@ namespace _1670webdemo.Controllers
     {
         private hrContext db = new hrContext();
 
-        // GET: Staffs
         public ActionResult Index()
         {
             var staffs = db.Staffs.Include(s => s.Account);
             return View(staffs.ToList());
         }
 
-        // GET: Staffs/Create
         public ActionResult Create()
         {
             ViewBag.Username = new SelectList(db.Accounts.Where(g => g.AccountType == "Staff"), "Username" , "Username");

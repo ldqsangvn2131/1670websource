@@ -14,7 +14,6 @@ namespace _1670webdemo.Controllers
     {
         private hrContext db = new hrContext();
 
-        // GET: Trainees
         public ActionResult Index()
         {
             var trainees = db.Trainees.Include(t => t.Account);
