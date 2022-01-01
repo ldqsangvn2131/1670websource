@@ -2,16 +2,36 @@
 @model IEnumerable<_1670webdemo.Models.Category>
 
 @{ Layout = "~/Views/Shared/_Layout.cshtml";
-                ViewBag.Title = "Category index"; }
+    ViewBag.Title = "Category index";
+}
 @{ if (HttpContext.Current.Session["Username"] == null)
     {
         Response.Redirect("~/Accounts/Login");
-    } }
+    }
+    else
+    {
+        if (HttpContext.Current.Session["AccountType"].ToString() == "Staff")
+        {
+
+        }
+        else
+        {
+            Response.Redirect("~/Home/Index");
+        }
+    }
+}
 <h2 class="text-center">@ViewBag.Title</h2>
+@if (HttpContext.Current.Session["Username"] != null)
+{
+    if (HttpContext.Current.Session["AccountType"].ToString() == "Trainer" || HttpContext.Current.Session["AccountType"].ToString() == "Trainee")
+    {
+    }
+    else
+    {
 <p>
     @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
-</p>
-
+</p>}
+            }
 <table class="table table-bordered" id="example1">
     <thead class="table thead-dark">
         <tr>
@@ -24,7 +44,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.CatDesc)
             </th>
-            <th>Modify</th>
+            @if (HttpContext.Current.Session["Username"] != null)
+            {
+                if (HttpContext.Current.Session["AccountType"].ToString() == "Trainer" || HttpContext.Current.Session["AccountType"].ToString() == "Trainee")
+                {
+                }
+                else
+                {
+<th>Modify</th>                }
+            }
         </tr>
     </thead>
     <tbody>
@@ -40,14 +68,22 @@
     <td>
         @Html.DisplayFor(modelItem => item.CatDesc)
     </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.CatID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.CatID }, new { onclick = "return confirm('Are you sure you wish to delete this category ?');" })
-    </td>
+    @if (HttpContext.Current.Session["Username"] != null)
+    {
+        if (HttpContext.Current.Session["AccountType"].ToString() == "Trainer" || HttpContext.Current.Session["AccountType"].ToString() == "Trainee")
+        {
+        }
+        else
+        {
+<td>
+    @Html.ActionLink("Edit", "Edit", new { id = item.CatID }) |
+    @Html.ActionLink("Delete", "Delete", new { id = item.CatID }, new { onclick = "return confirm('Are you sure you wish to delete this category ?');" })
+</td> }
+                }
+                else
+                {
+<td></td>}
+
 </tr>}
     </tbody>
 </table>
-
-
-
-

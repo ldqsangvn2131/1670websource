@@ -9,8 +9,8 @@ namespace _1670webdemo.Models
     [Table("sang01.CourseDetail")]
     public partial class CourseDetail
     {
-        [StringLength(50)]
-        public string CourseDetailID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int CourseDetailID { get; set; }
 
         [Required]
         [StringLength(50)]

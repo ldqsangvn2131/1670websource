@@ -13,14 +13,11 @@ namespace _1670webdemo.Controllers
     public class CourseDetailsController : Controller
     {
         private hrContext db = new hrContext();
-
         public ActionResult Index()
         {
             var courseDetails = db.CourseDetails.Include(c => c.Course).Include(c => c.Topic).Include(c => c.Trainee).Include(c => c.Trainer);
             return View(courseDetails.ToList());
         }
-
-       
         public ActionResult Create()
         {
             ViewBag.CourseID = new SelectList(db.Courses, "CourseID", "CourseName");
@@ -29,10 +26,9 @@ namespace _1670webdemo.Controllers
             ViewBag.TrainerID = new SelectList(db.Trainers, "TrainerID", "TrainerName");
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CourseDetailID,CourseID,TrainerID,TraineeID,TopicID")] CourseDetail courseDetail)
+        public ActionResult Create([Bind(Include = "CourseDetailID,TrainerID,TraineeID,TopicID,CourseID")] CourseDetail courseDetail)
         {
             if (ModelState.IsValid)
             {
@@ -47,10 +43,10 @@ namespace _1670webdemo.Controllers
             ViewBag.TrainerID = new SelectList(db.Trainers, "TrainerID", "TrainerName", courseDetail.TrainerID);
             return View(courseDetail);
         }
-
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             CourseDetail courseDetail = db.CourseDetails.Find(id);
+
             ViewBag.CourseID = new SelectList(db.Courses, "CourseID", "CourseName", courseDetail.CourseID);
             ViewBag.TopicID = new SelectList(db.Topics, "TopicID", "TopicName", courseDetail.TopicID);
             ViewBag.TraineeID = new SelectList(db.Trainees, "TraineeID", "TraineeName", courseDetail.TraineeID);
@@ -59,7 +55,7 @@ namespace _1670webdemo.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CourseDetailID,CourseID,TrainerID,TraineeID,TopicID")] CourseDetail courseDetail)
+        public ActionResult Edit([Bind(Include = "CourseDetailID,TrainerID,TraineeID,TopicID,CourseID")] CourseDetail courseDetail)
         {
             if (ModelState.IsValid)
             {
@@ -74,7 +70,7 @@ namespace _1670webdemo.Controllers
             return View(courseDetail);
         }
         [HttpGet]
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
 
             CourseDetail courseDetail = db.CourseDetails.Find(id);

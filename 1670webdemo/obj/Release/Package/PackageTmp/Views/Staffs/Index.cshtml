@@ -6,12 +6,32 @@
 @{ if (HttpContext.Current.Session["Username"] == null)
     {
         Response.Redirect("~/Accounts/Login");
-    } }
+    }
+    else
+    {
+        if (HttpContext.Current.Session["AccountType"].ToString() == "Admin")
+        {
+
+        }
+        else
+        {
+            Response.Redirect("~/Home/Index");
+        }
+    }
+}
 <h2 class="text-center">@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
-</p>
+@if (HttpContext.Current.Session["Username"] != null)
+{
+    if (HttpContext.Current.Session["AccountType"].ToString() == "Trainer" || HttpContext.Current.Session["AccountType"].ToString() == "Trainee")
+    {
+    }
+    else
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        </p>    }
+}
 <table class="table table-bordered" id="example1">
     <thead class="table thead-dark">
         <tr>
@@ -33,7 +53,16 @@
             <th>
                 @Html.DisplayNameFor(model => model.StaffAddr)
             </th>
-            <th>Modify</th>
+            @if (HttpContext.Current.Session["Username"] != null)
+            {
+                if (HttpContext.Current.Session["AccountType"].ToString() == "Trainer" || HttpContext.Current.Session["AccountType"].ToString() == "Trainee")
+                {
+                }
+                else
+                {
+                    <th>Modify</th>
+                }
+            }
         </tr>
     </thead>
     @foreach (var item in Model)
@@ -57,16 +86,24 @@
             <td>
                 @Html.DisplayFor(modelItem => item.StaffAddr)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.StaffID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.StaffID }, new { onclick = "return confirm('Are you sure you wish to delete this staff ?');" })
+            @if (HttpContext.Current.Session["Username"] != null)
+            {
+                if (HttpContext.Current.Session["AccountType"].ToString() == "Trainer" || HttpContext.Current.Session["AccountType"].ToString() == "Trainee")
+                {
+                }
+                else
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.StaffID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.StaffID }, new { onclick = "return confirm('Are you sure you wish to delete this staff ?');" })
+                    </td>
+                }
+            }
+            else
+            {
+                <td></td>
+            }
 
-            </td>
         </tr>
     }
 </table>
-<style>
-    #hidepass {
-        -webkit-text-security: disc; /* Default */
-    }
-</style>

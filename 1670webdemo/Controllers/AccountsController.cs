@@ -109,6 +109,7 @@ namespace _1670webdemo.Controllers
             return View("Login");
         }
         [HttpPost]
+
         public ActionResult Login([Bind(Include = "UserName,Password,AccountType")] Account account)
         {
             Account acc = new Account();
@@ -125,12 +126,12 @@ namespace _1670webdemo.Controllers
             {
                 return RedirectToAction("Login", "Accounts");
             }
+
         }
         public ActionResult Logout()
         {
-            Session.Abandon();
+            Session.RemoveAll();
             return RedirectToAction("Index");
         }
-        
     }
 }

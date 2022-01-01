@@ -39,20 +39,25 @@ namespace _1670webdemo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TraineeID,TraineeName,TraineeEmail,TraineeAge,TraineeDoB,TraineeEdu,Username")] Trainee trainee)
         {
+            ViewBag.Username = new SelectList(db.Accounts.Where(g => g.AccountType == "Trainee"), "Username", "Password", trainee.Username);
+
             if (ModelState.IsValid)
             {
+                var isTraineeIDAlreadyExists = db.Trainees.Any(x => x.TraineeID == trainee.TraineeID);
+                if (isTraineeIDAlreadyExists)
+                {
+                    return View(trainee);
+                }
                 db.Trainees.Add(trainee);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Username = new SelectList(db.Accounts.Where(g => g.AccountType == "Trainee"), trainee.Username);
             return View(trainee);
         }
         public ActionResult Edit(string id)
         {
             Trainee trainee = db.Trainees.Find(id);
-            ViewBag.Username = new SelectList(db.Accounts, "Username", "Username", trainee.Username);
             return View(trainee);
         }
         [HttpPost]
@@ -65,7 +70,7 @@ namespace _1670webdemo.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Username = new SelectList(db.Accounts, "Username", "Password", trainee.Username);
+
             return View(trainee);
         }
         [HttpGet]

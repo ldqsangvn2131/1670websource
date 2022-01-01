@@ -5,6 +5,9 @@
 }
 @{ if (HttpContext.Current.Session["Username"] == null)
     {
+    }
+    if (HttpContext.Current.Session["AccountType"].ToString() == "Admin")
+    {
         Response.Redirect("~/Accounts/Login");
     } }
 @using (Html.BeginForm())

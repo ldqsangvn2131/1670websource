@@ -45,13 +45,23 @@
         <div class="col-md-6 col-12">
             <div class="form-group">
                 @Html.LabelFor(model => model.AccountType, htmlAttributes: new { @class = "control-label col-md-4" })
+                @if (HttpContext.Current.Session["AccountType"].ToString() == "Admin")
+                {
+                    @Html.DropDownList("AccountType", new List<SelectListItem>
+{
+    new SelectListItem {Text = "Staff", Value = "Staff"},
+    new SelectListItem {Text = "Trainer", Value = "Trainer"}
+}, new { @class = "form-control" })
+                }
+                else if(HttpContext.Current.Session["AccountType"].ToString() == "Staff")
+                {
+
+
                 @Html.DropDownList("AccountType", new List<SelectListItem>
 {
-    new SelectListItem {Text = "Admin", Value = "Admin"},
-    new SelectListItem {Text = "Staff", Value = "Staff"},
-    new SelectListItem {Text = "Trainer", Value = "Trainer"},
-    new SelectListItem {Text = "Trainee", Value = "Trainee"},
+    new SelectListItem {Text = "Trainee", Value = "Trainee"}
 }, new { @class = "form-control" })
+                }
                 @Html.ValidationMessageFor(model => model.AccountType, "", new { @class = "text-danger" })
             </div>
         </div>

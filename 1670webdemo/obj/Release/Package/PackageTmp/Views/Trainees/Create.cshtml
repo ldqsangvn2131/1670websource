@@ -46,11 +46,7 @@
                 @Html.ValidationMessageFor(model => model.TraineeAge, "", new { @class = "text-danger" })
             </div>
         </div>
-        <script type="text/javascript">
-            $(function () {
-                $('.date-picker').datepicker();
-            })
-        </script>
+
         <div class="form-group">
             @Html.LabelFor(model => model.TraineeDoB, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -58,9 +54,7 @@
                 @Html.ValidationMessageFor(model => model.TraineeDoB, "", new { @class = "text-danger" })
             </div>
         </div>
-        <script type="text/javascript">
-            document.getElementById('demo2').type = 'date';
-        </script>
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.TraineeEdu, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -85,26 +79,3 @@
         </div>
     </div>
 }
-<script>
-    $.datepicker.regional['en-GB'] = {
-        clearText: 'Clear', clearStatus: '',
-        closeText: "Done",
-        prevText: "Prev",
-        nextText: "Next",
-        currentText: "Today",
-        monthNames: ["January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"],
-        monthNamesShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        dayNames: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        dayNamesShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-        dayNamesMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-        weekHeader: "Wk",
-        dateFormat: "dd/mm/yy",
-        firstDay: 1,
-        isRTL: false,
-        showMonthAfterYear: false,
-        yearSuffix: ""
-    };
-    $.datepicker.setDefaults($.datepicker.regional['en-GB']);
-</script>

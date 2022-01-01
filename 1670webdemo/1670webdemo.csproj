@@ -153,8 +153,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\dist\css\adminlte.min.css" />
-    <Content Include="Assets\dist\css\animation.css" />
     <Content Include="Assets\dist\css\adminlte.css" />
+    <Content Include="Assets\dist\img\back.gif" />
     <Content Include="Assets\dist\img\cover1.jpg" />
     <Content Include="Assets\dist\img\favicon.png" />
     <Content Include="Assets\dist\img\fptlogo.png" />
@@ -357,13 +357,12 @@
     <Content Include="Views\Topics\Create.cshtml" />
     <Content Include="Views\Topics\Edit.cshtml" />
     <Content Include="Views\Topics\Index.cshtml" />
-    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <Content Include="Views\Trainers\Profiles.cshtml" />
-    <Content Include="Views\Trainers\EditProfiles.cshtml" />
     <Content Include="Views\Trainees\Profiles.cshtml" />
     <Content Include="Views\CourseDetails\Create.cshtml" />
     <Content Include="Views\CourseDetails\Edit.cshtml" />
     <Content Include="Views\CourseDetails\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\1670fpthrsystem - Web Deploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

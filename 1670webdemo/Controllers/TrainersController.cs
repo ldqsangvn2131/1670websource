@@ -31,45 +31,31 @@ namespace _1670webdemo.Controllers
             return View(trainer);
         }
 
-        public ActionResult EditProfiles(string id)
-        {
-            Trainer trainer = new Trainer();
-            trainer = db.Trainers.Where(a => a.Username == id).FirstOrDefault();
-            return View(trainer);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public ActionResult EditProfile([Bind(Include = "TrainerID,Username,TrainerName,TrainerAge,TrainerSpec,TrainerAddr")] Trainer trainer)
-        {
-            if (ModelState.IsValid)
-            {
-
-                db.Entry(trainer).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Profiles");
-            }
-                return View(trainer);
-            }
 
         public ActionResult Create()
         {
             ViewBag.Username = new SelectList(db.Accounts.Where(g => g.AccountType == "Trainer"), "Username", "Username");
             return View();
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TrainerID,TrainerName,TrainerEmail,TrainerSpec,TrainerAge,TrainerAddr,Username")] Trainer trainer)
         {
+            ViewBag.Username = new SelectList(db.Accounts.Where(g => g.AccountType == "Trainer"), "Username", "Password", trainer.Username);
+
             if (ModelState.IsValid)
             {
+                var isTrainerIDAlreadyExists = db.Trainers.Any(x => x.TrainerID == trainer.TrainerID);
+                if (isTrainerIDAlreadyExists)
+                {
+                    return View(trainer);
+                }
                 db.Trainers.Add(trainer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Username = new SelectList(db.Accounts.Where(g => g.AccountType == "Trainer"), "Username", "Password", trainer.Username);
             return View(trainer);
         }
         public ActionResult Edit(string id)

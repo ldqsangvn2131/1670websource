@@ -6,7 +6,19 @@
 @{ if (HttpContext.Current.Session["Username"] == null)
     {
         Response.Redirect("~/Accounts/Login");
-    } }
+    }
+    else
+    {
+        if (HttpContext.Current.Session["AccountType"].ToString() == "Admin")
+        {
+            Response.Redirect("~/Home/Index");
+
+        }
+        else
+        {
+        }
+    }
+}   
 <h2 class="text-center">@ViewBag.Title</h2>
 
 @if (HttpContext.Current.Session["Username"] != null)

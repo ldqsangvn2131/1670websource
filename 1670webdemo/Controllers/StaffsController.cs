@@ -52,7 +52,7 @@ namespace _1670webdemo.Controllers
         public ActionResult Edit(string id)
         {
             Staff staff = db.Staffs.Find(id);
-            ViewBag.Username = new SelectList(db.Accounts, "Username", "Password", staff.Username);
+            ViewBag.Username = new SelectList(db.Accounts, "Username", "Username", staff.Username);
             return View(staff);
         }
         [HttpPost]

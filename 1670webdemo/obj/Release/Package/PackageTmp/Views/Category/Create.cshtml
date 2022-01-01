@@ -1,9 +1,20 @@
 ﻿@model _1670webdemo.Models.Category
 @{ ViewBag.Title = "Create category"; }
 @{ if (HttpContext.Current.Session["Username"] == null)
-                {
-                    Response.Redirect("~/Accounts/Login");
-                }
+    {
+        Response.Redirect("~/Accounts/Login");
+    }
+    else
+    {
+        if (HttpContext.Current.Session["AccountType"].ToString() == "Staff")
+        {
+
+        }
+        else
+        {
+            Response.Redirect("~/Home/Index");
+        }
+    }
 }
 @using (Html.BeginForm())
 {

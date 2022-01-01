@@ -68,10 +68,6 @@ namespace _1670webdemo.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CourseDetail>()
-                .Property(e => e.CourseDetailID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CourseDetail>()
                 .Property(e => e.TrainerID)
                 .IsUnicode(false);
 
@@ -219,7 +215,7 @@ namespace _1670webdemo.Models
             modelBuilder.Entity<Trainer>()
                 .HasMany(e => e.Courses)
                 .WithRequired(e => e.Trainer)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
         }
     }
 }
