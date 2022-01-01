@@ -24,53 +24,53 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-            </div>
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="col-md-6 col-12">
-            <div class="form-group">
-                @Html.LabelFor(model => model.AccountType, htmlAttributes: new { @class = "control-label col-md-4" })
-                @if (HttpContext.Current.Session["AccountType"].ToString() == "Admin")
-                {
-                    @Html.DropDownList("AccountType", new List<SelectListItem>
+    <div class="col-md-6 col-12">
+        <div class="form-group">
+            @Html.LabelFor(model => model.AccountType, htmlAttributes: new { @class = "control-label col-md-4" })
+            @if (HttpContext.Current.Session["AccountType"].ToString() == "Admin")
+            {
+                @Html.DropDownList("AccountType", new List<SelectListItem>
 {
-    new SelectListItem {Text = "Staff", Value = "Staff"},
-    new SelectListItem {Text = "Trainer", Value = "Trainer"}
+new SelectListItem {Text = "Staff", Value = "Staff"},
+new SelectListItem {Text = "Trainer", Value = "Trainer"}
 }, new { @class = "form-control" })
-                }
-                else if(HttpContext.Current.Session["AccountType"].ToString() == "Staff")
-                {
+            }
+            else if (HttpContext.Current.Session["AccountType"].ToString() == "Staff")
+            {
 
 
                 @Html.DropDownList("AccountType", new List<SelectListItem>
 {
     new SelectListItem {Text = "Trainee", Value = "Trainee"}
 }, new { @class = "form-control" })
-                }
-                @Html.ValidationMessageFor(model => model.AccountType, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-primary" />
-                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
-            </div>
+            }
+            @Html.ValidationMessageFor(model => model.AccountType, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-primary" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    </div>
+</div>
 }

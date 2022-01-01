@@ -73,6 +73,7 @@ D:\Works\1670\visualstudio\1670webdemo\1670webdemo\bin\System.Web.WebPages.xml
 D:\Works\1670\visualstudio\1670webdemo\1670webdemo\bin\System.Web.WebPages.Deployment.xml
 D:\Works\1670\visualstudio\1670webdemo\1670webdemo\bin\System.Web.WebPages.Razor.xml
 D:\Works\1670\visualstudio\1670webdemo\1670webdemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Works\1670\visualstudio\1670webdemo\1670webdemo\obj\Debug\1670webdemo.csproj.AssemblyReference.cache
 D:\Works\1670\visualstudio\1670webdemo\1670webdemo\obj\Debug\1670webdemo.csproj.CoreCompileInputs.cache
 D:\Works\1670\visualstudio\1670webdemo\1670webdemo\obj\Debug\1670webdemo.csproj.CopyComplete
 D:\Works\1670\visualstudio\1670webdemo\1670webdemo\obj\Debug\1670webdemo.dll
